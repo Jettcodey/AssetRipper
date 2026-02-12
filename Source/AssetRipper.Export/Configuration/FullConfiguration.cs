@@ -51,6 +51,14 @@ public class FullConfiguration : CoreConfiguration
 		}
 	}
 
+	public void LoadFromJsonPath(string path)
+	{
+		SerializedSettings settings = SerializedSettings.Load(path);
+		ImportSettings = settings.Import;
+		ProcessingSettings = settings.Processing;
+		ExportSettings = settings.Export;
+	}
+
 	public void SaveToDefaultPath()
 	{
 		new SerializedSettings(ImportSettings, ProcessingSettings, ExportSettings).SaveToDefaultPath();
