@@ -47,6 +47,9 @@ public static class Pass002_RenameSubnodes
 		{ "Float4" , Vector4FloatName },
 		{ "Fixed_bitset" , "FixedBitset" },
 		{ "GradientNEW" , "Gradient" },
+		{ "ProgramParameters" , "SerializedProgramParameters" },
+		{ "BufferBinding" , "BufferBindingParameter" },
+		{ "ConstantBufferParameter" , "ConstantBuffer" },
 	};
 
 	private static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T?> enumerable) where T : notnull
@@ -650,6 +653,10 @@ public static class Pass002_RenameSubnodes
 		{
 			string suffix = node.Name.Substring(5);
 			node.Name = "m_Source" + suffix;
+		}
+		else if (node.Name == "m_Val")
+		{
+			node.Name = "m_Value";
 		}
 	}
 
