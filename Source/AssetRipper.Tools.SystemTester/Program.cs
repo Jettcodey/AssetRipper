@@ -115,10 +115,10 @@ static class Program
 	private static void Rip(string[] inputPaths, string outputPath, string settingsPath)
 	{
 		Logger.Clear();
-		Logger.Add(new ConsoleLogger(false)); 
+		Logger.Add(new ConsoleLogger(false));
 		FullConfiguration settings = new();
-		settings.LogConfigurationValues();
 		settings.LoadFromJsonPath(settingsPath);
+		settings.LogConfigurationValues();
 		ExportHandler exportHandler = new(settings);
 		GameData gameData = exportHandler.LoadAndProcess(inputPaths, LocalFileSystem.Instance);
 		PrepareExportDirectory(outputPath);
